@@ -14,6 +14,24 @@ matrix:
       dist: xenial  # required for Python >= 3.7
       python: 3.7
       script: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+#Power_jobs
+    - name: "Check helpers on Python 2.7"
+      python: 2.7
+      script: ./scripts/check-helpers.sh
+      arch: ppc64le
+    - name: "Python style check on Python 2.7"
+      python: 2.7
+      script: ./scripts/py-style-check.sh
+      arch: ppc64le
+    - name: "flake8 lint on Python 2.7"      
+      python: 2.7
+      script: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      arch: ppc64le
+    - name: "flake8 lint on Python 3.7"
+      dist: xenial  # required for Python >= 3.7
+      python: 3.7
+      script: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      arch: ppc64le
   allow_failures:
     - name: "Check helpers on Python 2.7"
 before_install: pip install --upgrade pip
